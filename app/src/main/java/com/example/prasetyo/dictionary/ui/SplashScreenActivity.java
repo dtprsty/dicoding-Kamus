@@ -3,11 +3,10 @@ package com.example.prasetyo.dictionary.ui;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ProgressBar;
-
 
 import com.example.prasetyo.dictionary.R;
 import com.example.prasetyo.dictionary.database.KamusHelper;
@@ -33,7 +32,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         ButterKnife.bind(this);
-        
+
         new LoadData().execute();
     }
 
@@ -66,7 +65,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 progress = 30;
                 publishProgress((int) progress);
                 Double progressMaxInsert = 80.0;
-                Double progressDiff = (progressMaxInsert - progress) / kamusIndonesia.size()+kamusInggris.size();
+                Double progressDiff = (progressMaxInsert - progress) / kamusIndonesia.size() + kamusInggris.size();
 
                 kamusHelper.beginTransaction();
 
@@ -86,7 +85,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     kamusHelper.setTransactionSuccess();
                 } catch (Exception e) {
                     // Jika gagal maka do nothing
-                    Log.e(TAG, "doInBackground: Exception "+e);
+                    Log.e(TAG, "doInBackground: Exception " + e);
                 }
 
                 kamusHelper.endTransaction();

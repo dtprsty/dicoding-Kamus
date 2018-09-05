@@ -1,6 +1,5 @@
 package com.example.prasetyo.dictionary.database;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -17,7 +16,7 @@ public class KamusHelper {
 
     private SQLiteDatabase database;
 
-    public KamusHelper(Context context){
+    public KamusHelper(Context context) {
         this.context = context;
     }
 
@@ -27,17 +26,17 @@ public class KamusHelper {
         return this;
     }
 
-    public void close(){
+    public void close() {
         dataBaseHelper.close();
     }
 
-    public ArrayList<Kamus> getDataByIndonesia(String keyword){
+    public ArrayList<Kamus> getDataByIndonesia(String keyword) {
         String result = "";
-        Cursor cursor = database.query(DatabaseContract.TABLE_INDONESIA,null, DatabaseContract.KamusColumns.INDONESIA+" LIKE ?",new String[]{keyword},null,null, DatabaseContract.KamusColumns._ID + " ASC",null);
+        Cursor cursor = database.query(DatabaseContract.TABLE_INDONESIA, null, DatabaseContract.KamusColumns.INDONESIA + " LIKE ?", new String[]{keyword}, null, null, DatabaseContract.KamusColumns._ID + " ASC", null);
         cursor.moveToFirst();
         ArrayList<Kamus> arrayList = new ArrayList<>();
         Kamus Kamus;
-        if (cursor.getCount()>0) {
+        if (cursor.getCount() > 0) {
             do {
                 Kamus = new Kamus();
                 Kamus.setId(cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseContract.KamusColumns._ID)));
@@ -53,13 +52,13 @@ public class KamusHelper {
         return arrayList;
     }
 
-    public ArrayList<Kamus> getDataByInggris(String keyword){
+    public ArrayList<Kamus> getDataByInggris(String keyword) {
         String result = "";
-        Cursor cursor = database.query(DatabaseContract.TABLE_INGGRIS,null, DatabaseContract.KamusColumns.INDONESIA+" LIKE ?",new String[]{keyword},null,null, DatabaseContract.KamusColumns._ID + " ASC",null);
+        Cursor cursor = database.query(DatabaseContract.TABLE_INGGRIS, null, DatabaseContract.KamusColumns.INDONESIA + " LIKE ?", new String[]{keyword}, null, null, DatabaseContract.KamusColumns._ID + " ASC", null);
         cursor.moveToFirst();
         ArrayList<Kamus> arrayList = new ArrayList<>();
         Kamus Kamus;
-        if (cursor.getCount()>0) {
+        if (cursor.getCount() > 0) {
             do {
                 Kamus = new Kamus();
                 Kamus.setId(cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseContract.KamusColumns._ID)));
@@ -75,21 +74,21 @@ public class KamusHelper {
         return arrayList;
     }
 
-    public void beginTransaction(){
+    public void beginTransaction() {
         database.beginTransaction();
     }
 
-    public void setTransactionSuccess(){
+    public void setTransactionSuccess() {
         database.setTransactionSuccessful();
     }
 
-    public void endTransaction(){
+    public void endTransaction() {
         database.endTransaction();
     }
 
-    public void insertTransactionIndonesia(Kamus Kamus){
-        String sql = "INSERT INTO "+DatabaseContract.TABLE_INDONESIA+" ("+ DatabaseContract.KamusColumns.INDONESIA+", "+ DatabaseContract.KamusColumns.INGGRIS
-                +") VALUES (?, ?)";
+    public void insertTransactionIndonesia(Kamus Kamus) {
+        String sql = "INSERT INTO " + DatabaseContract.TABLE_INDONESIA + " (" + DatabaseContract.KamusColumns.INDONESIA + ", " + DatabaseContract.KamusColumns.INGGRIS
+                + ") VALUES (?, ?)";
         SQLiteStatement stmt = database.compileStatement(sql);
         stmt.bindString(1, Kamus.getIndonesia());
         stmt.bindString(2, Kamus.getInggris());
@@ -98,9 +97,9 @@ public class KamusHelper {
 
     }
 
-    public void insertTransactionInggris(Kamus Kamus){
-        String sql = "INSERT INTO "+DatabaseContract.TABLE_INGGRIS+" ("+ DatabaseContract.KamusColumns.INDONESIA+", "+ DatabaseContract.KamusColumns.INGGRIS
-                +") VALUES (?, ?)";
+    public void insertTransactionInggris(Kamus Kamus) {
+        String sql = "INSERT INTO " + DatabaseContract.TABLE_INGGRIS + " (" + DatabaseContract.KamusColumns.INDONESIA + ", " + DatabaseContract.KamusColumns.INGGRIS
+                + ") VALUES (?, ?)";
         SQLiteStatement stmt = database.compileStatement(sql);
         stmt.bindString(2, Kamus.getIndonesia());
         stmt.bindString(1, Kamus.getInggris());

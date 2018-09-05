@@ -8,11 +8,11 @@ public class Kamus implements Parcelable {
     private String indonesia;
     private String inggris;
 
-    public Kamus(){
+    public Kamus() {
 
     }
 
-    public Kamus(String indonesia, String inggris){
+    public Kamus(String indonesia, String inggris) {
         this.indonesia = indonesia;
         this.inggris = inggris;
     }
