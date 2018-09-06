@@ -20,7 +20,7 @@
             android:id="@+id/collapse_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentScrim="?attr/colorPrimary"
+            app:contentScrim="?attr/colorPrimary"
             android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:titleEnabled="false">
@@ -28,17 +28,45 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax">
 
+                <LinearLayout
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_library_books_white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dictionary"
+                        android:gravity="center"
+                        android:textSize="17pt"
+                        android:textColor="@color/textColorPrimary" />
+
+                </LinearLayout>
+
                 <EditText
+                    android:hint="@string/search_hint"
                     android:id="@+id/txKeyword"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:iconifiedByDefault="false"
                     android:layout_margin="32dp"
                     android:background="@color/textColorPrimary"
-                    android:padding="@dimen/activity_horizontal_margin" />
+                    android:textColorHint="@color/grey"
+                    android:textColor="@color/black"
+                    android:padding="8dp" />
             </LinearLayout>
 
         </android.support.design.widget.CollapsingToolbarLayout>

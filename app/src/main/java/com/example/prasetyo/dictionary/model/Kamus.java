@@ -5,16 +5,16 @@ import android.os.Parcelable;
 
 public class Kamus implements Parcelable {
     private int id;
-    private String indonesia;
-    private String inggris;
+    private String kata;
+    private String arti;
 
     public Kamus() {
 
     }
 
-    public Kamus(String indonesia, String inggris) {
-        this.indonesia = indonesia;
-        this.inggris = inggris;
+    public Kamus(String kata, String arti) {
+        this.kata = kata;
+        this.arti = arti;
     }
 
     public int getId() {
@@ -25,20 +25,20 @@ public class Kamus implements Parcelable {
         this.id = id;
     }
 
-    public String getIndonesia() {
-        return indonesia;
+    public String getKata() {
+        return kata;
     }
 
-    public void setIndonesia(String indonesia) {
-        this.indonesia = indonesia;
+    public void setKata(String kata) {
+        this.kata = kata;
     }
 
-    public String getInggris() {
-        return inggris;
+    public String getArti() {
+        return arti;
     }
 
-    public void setInggris(String inggris) {
-        this.inggris = inggris;
+    public void setArti(String arti) {
+        this.arti = arti;
     }
 
     @Override
@@ -49,14 +49,14 @@ public class Kamus implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.id);
-        dest.writeString(this.indonesia);
-        dest.writeString(this.inggris);
+        dest.writeString(this.kata);
+        dest.writeString(this.arti);
     }
 
     protected Kamus(Parcel in) {
         this.id = in.readInt();
-        this.indonesia = in.readString();
-        this.inggris = in.readString();
+        this.kata = in.readString();
+        this.arti = in.readString();
     }
 
     public static final Parcelable.Creator<Kamus> CREATOR = new Parcelable.Creator<Kamus>() {
