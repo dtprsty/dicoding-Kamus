@@ -19,7 +19,7 @@ public class AppPreference {
         SharedPreferences.Editor editor = prefs.edit();
         String key = context.getResources().getString(R.string.app_first_run);
         editor.putBoolean(key, input);
-        editor.commit();
+        editor.apply();
     }
 
     public Boolean getFirstRun() {

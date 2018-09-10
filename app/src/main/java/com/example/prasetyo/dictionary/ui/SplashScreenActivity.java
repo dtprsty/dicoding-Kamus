@@ -107,6 +107,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                         publishProgress((int) maxprogress);
                     }
                 } catch (Exception e) {
+                    Log.e(TAG, "Exception "+e);
                 }
             }
             return null;

@@ -56,9 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
             public void afterTextChanged(Editable s) {
 
-                // you can call or do what you want with your EditText here
-
-                // yourEditText...
             }
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -66,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 mkamus.clear();
-                if (isEnglish) {
+                if (isEnglish && !txKeyword.getText().toString().isEmpty()) {
                     mkamus = helper.getDataByInggris(s.toString());
-                } else {
+                } else if (!isEnglish && !txKeyword.getText().toString().isEmpty()) {
                     mkamus = helper.getDataByIndonesia(s.toString());
                 }
                 adapter.addItem(mkamus);
@@ -118,14 +115,21 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.eng_indo:
                 isEnglish = true;
+                refresh();
                 break;
 
             case R.id.indo_eng:
                 isEnglish = false;
+                refresh();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    private void refresh(){
+        mkamus.clear();
+        adapter.notifyDataSetChanged();
+        txKeyword.setText("");
+    }
 
 }

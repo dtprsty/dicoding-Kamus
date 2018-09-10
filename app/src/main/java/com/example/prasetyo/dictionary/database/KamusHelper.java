@@ -31,7 +31,6 @@ public class KamusHelper {
     }
 
     public ArrayList<Kamus> getDataByIndonesia(String keyword) {
-        String result = "";
         Cursor cursor = database.rawQuery("SELECT * FROM " + DatabaseContract.TABLE_INDONESIA + " WHERE " + DatabaseContract.KamusColumns.INDONESIA
                 + " LIKE '%" + keyword.trim() + "%' order by " + DatabaseContract.KamusColumns._ID + " ASC", null);
         cursor.moveToFirst();
@@ -54,7 +53,6 @@ public class KamusHelper {
     }
 
     public ArrayList<Kamus> getDataByInggris(String keyword) {
-        String result = "";
         Cursor cursor = database.rawQuery("SELECT * FROM " + DatabaseContract.TABLE_INGGRIS + " WHERE " + DatabaseContract.KamusColumns.INGGRIS
                 + " LIKE '%" + keyword.trim() + "%' order by " + DatabaseContract.KamusColumns._ID + " ASC", null);
         cursor.moveToFirst();

@@ -12,6 +12,9 @@ import com.example.prasetyo.dictionary.model.Kamus;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
     private ArrayList<Kamus> mData = new ArrayList<>();
     private Context context;
@@ -36,8 +39,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
 
     @Override
     public void onBindViewHolder(MainHolder holder, int position) {
-        holder.textKata.setText(mData.get(position).getKata());
-        holder.textArti.setText(mData.get(position).getArti());
+        holder.txKata.setText(mData.get(position).getKata());
+        holder.txArti.setText(mData.get(position).getArti());
     }
 
     @Override
@@ -56,13 +59,15 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
     }
 
     public static class MainHolder extends RecyclerView.ViewHolder {
-        private TextView textKata;
-        private TextView textArti;
+        @BindView(R.id.txKata)
+        TextView txKata;
+        @BindView(R.id.txArti)
+        TextView txArti;
 
         public MainHolder(View itemView) {
             super(itemView);
-            textKata = (TextView) itemView.findViewById(R.id.txKata);
-            textArti = (TextView) itemView.findViewById(R.id.txArti);
+
+            ButterKnife.bind(this, itemView);
         }
     }
 }

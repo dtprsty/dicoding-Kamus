@@ -28,9 +28,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void init() {
-
         ButterKnife.bind(this);
-
         txKata.setText(getIntent().getStringExtra(EXTRA_KATA));
         txArti.setText(getIntent().getStringExtra(EXTRA_ARTI));
 
